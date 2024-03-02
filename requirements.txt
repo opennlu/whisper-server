@@ -1,0 +1,4 @@
+flask
+waitress
+werkzeug
+openai-whisper

@@ -54,4 +54,8 @@ def transcribe_audio():
     return jsonify({"error": "Invalid file"}), 400
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    from waitress import serve
+    # Get host and port from environment variables, use default values if not provided
+    host = os.environ.get('WHISPER_HOST', '0.0.0.0')
+    port = int(os.environ.get('WHISPER_PORT', 28466))
+    app.run(host=host, port=port)
