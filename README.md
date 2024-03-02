@@ -66,7 +66,7 @@ curl -X POST \
 ### CPU only
 
 ```
-docker run -d -p 28466:28466 opennlu/whisper-server
+docker run -d -p 28466:28466 --name whisper-server opennlu/whisper-server
 ```
 
 ### Nvidia GPU
@@ -75,7 +75,7 @@ docker run -d -p 28466:28466 opennlu/whisper-server
 2. Run Whisper Server inside a Docker container
 
 ```
-docker run -d --gpus=all -p 28466:28466 opennlu/whisper-server
+docker run -d --gpus=all -p 28466:28466 --name whisper-server opennlu/whisper-server
 ```
 
 ## Contribution
