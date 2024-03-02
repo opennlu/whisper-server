@@ -39,6 +39,45 @@ To start Whisper Server from the command line, execute the following command:
 python whisper_server.py
 ```
 
+## API Documentation
+
+### Process Audio File
+
+Endpoint: `POST http://localhost:28466/whisper`
+
+This endpoint allows users to submit an audio file for processing. The audio file should be sent as form-data in the request body.
+
+Request Parameters:
+
+- `file`: The audio file to be processed. Required.
+- `language`: The returning language to be used. Optional.
+
+```
+curl -X POST \
+  -F "file=@/path/to/your/audio/file.mp3" \
+  http://localhost:28466/whisper
+```
+
+## Docker
+
+> [!CAUTION]  
+> This is experimental, as it will always pull the model files when using `docker run`, as there is still no volume mount.
+
+### CPU only
+
+```
+docker run -d -p 28466:28466 opennlu/whisper-server
+```
+
+### Nvidia GPU
+
+1. Install the [Nvidia container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation).
+2. Run Whisper Server inside a Docker container
+
+```
+docker run -d --gpus=all -p 28466:28466 opennlu/whisper-server
+```
+
 ## Contribution
 
 Contributions to Whisper Server are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request on GitHub.
